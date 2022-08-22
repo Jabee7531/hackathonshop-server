@@ -1,4 +1,5 @@
 <div align="center">
+  <h3>Hackathon Shop</h3>
   <h3>해커톤 쇼핑몰</h3>
 </div>
 <div align="center">
@@ -14,6 +15,21 @@
 <img src="https://img.shields.io/badge/Jest-C21325?logo=Jest&logoColor=white"/>
 <img src="https://img.shields.io/badge/Swagger-85EA2D?logo=Swagger&logoColor=white"/>
 </div>
+
+# Description
+
+A template hackerton shop to quickly create a mall homepage.
+
+Take a look at Hackerton Shop and build your own shopping mall!
+
+</br>
+
+# License
+
+MIT License
+
+</br>
+</br>
 
 # 요약
 
