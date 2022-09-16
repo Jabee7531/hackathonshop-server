@@ -24,10 +24,48 @@ Take a look at Hackerton Shop and build your own shopping mall!
 
 </br>
 
+# Quick Start Guide
+
+### 1. installation
+
+```bash
+git clone https://github.com/Jabee7531/hackathonshop-server.git
+cd hackathonshop-server
+yarn
+```
+
+### 2. set up `.env` file
+
+```
+ENV=development
+
+CORS_ALLOWED_ORIGINS=your_client_url
+
+DATABASE_HOST=your_database_url.com
+DATABASE_PORT=5432
+DATABASE_USERNAME=username
+DATABASE_PASSWORD=password
+DATABASE_DATABASE=postgres
+DATABASE_SYNCHRONIZE=true
+
+JWT_SECRET=secret
+JWT_EXPIRATION_TIME=24000
+Payment_SecretKey=toss_payment_key
+```
+
+### 3. start
+
+```
+yarn start:dev
+```
+
+<br/>
+
 # License
 
 MIT License
 
+</br>
 </br>
 </br>
 
@@ -38,6 +76,43 @@ MIT License
 해커톤 숍을 참고 하여 자신만의 쇼핑몰을 만들어 보세요 !
 
 </br>
+
+# 빠른시작
+
+### 1. 설치하기
+
+```bash
+git clone https://github.com/Jabee7531/hackathonshop-server.git
+cd hackathonshop-server
+yarn
+```
+
+### 2. `.env`파일 설정
+
+```
+ENV=development
+
+CORS_ALLOWED_ORIGINS=your_client_url
+
+DATABASE_HOST=your_database_url.com
+DATABASE_PORT=5432
+DATABASE_USERNAME=username
+DATABASE_PASSWORD=password
+DATABASE_DATABASE=postgres
+DATABASE_SYNCHRONIZE=true
+
+JWT_SECRET=secret
+JWT_EXPIRATION_TIME=24000
+Payment_SecretKey=toss_payment_key
+```
+
+### 3. 시작하기
+
+```
+yarn start:dev
+```
+
+<br/>
 
 # 라이센스
 
