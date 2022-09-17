@@ -77,6 +77,12 @@ yarn start:dev
 
 <br/>
 
+# ERD
+
+<img src="./img/hackathonshop-ERD.png"/>
+
+<br/>
+
 # License
 
 MIT License
@@ -143,6 +149,12 @@ yarn start:dev
 <img src="./img/hackathonshop-swagger3.png"/>
 <img src="./img/hackathonshop-swagger4.png"/>
 <img src="./img/hackathonshop-swagger5.png"/>
+
+<br/>
+
+# ERD
+
+<img src="./img/hackathonshop-ERD.png"/>
 
 <br/>
 
