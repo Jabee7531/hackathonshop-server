@@ -61,6 +61,22 @@ yarn start:dev
 
 <br/>
 
+# Project & CI/CD architecture
+
+<img src="./img/hackathonshop-architecture.png"/>
+
+<br/>
+
+# API List
+
+<img src="./img/hackathonshop-swagger1.png"/>
+<img src="./img/hackathonshop-swagger2.png"/>
+<img src="./img/hackathonshop-swagger3.png"/>
+<img src="./img/hackathonshop-swagger4.png"/>
+<img src="./img/hackathonshop-swagger5.png"/>
+
+<br/>
+
 # License
 
 MIT License
@@ -111,6 +127,22 @@ Payment_SecretKey=toss_payment_key
 ```
 yarn start:dev
 ```
+
+<br/>
+
+# 프로젝트 & CI/CD 아키텍쳐
+
+<img src="./img/hackathonshop-architecture.png"/>
+
+<br/>
+
+# API 목록
+
+<img src="./img/hackathonshop-swagger1.png"/>
+<img src="./img/hackathonshop-swagger2.png"/>
+<img src="./img/hackathonshop-swagger3.png"/>
+<img src="./img/hackathonshop-swagger4.png"/>
+<img src="./img/hackathonshop-swagger5.png"/>
 
 <br/>
 
