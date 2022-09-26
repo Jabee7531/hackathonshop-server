@@ -29,7 +29,6 @@ export class UsersController {
     constructor(
         private readonly usersService: UsersService,
     ) {}
-
     @ApiOperation({
         summary: '유저 가입여부 확인',
         description: '유저 가입여부 확인',
@@ -95,8 +94,8 @@ export class UsersController {
     }
 
     @ApiOperation({
-        summary: '유저 SignIn',
-        description: '유저 SignIn',
+        summary: '유저 로그인',
+        description: '유저 로그인',
     })
     @ApiResponse({
         status: 200000,
@@ -241,8 +240,8 @@ export class UsersController {
     }
 
     @ApiOperation({
-        summary: 'User SignUp',
-        description: 'User SignUp',
+        summary: '유저 회원가입',
+        description: '유저 회원가입',
     })
     @ApiResponse({
         status: 201000,
