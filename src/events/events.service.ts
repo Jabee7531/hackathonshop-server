@@ -27,6 +27,7 @@ export class EventsService {
     async create(
         createEventDto: CreateEventDto,
     ): Promise<Event> {
+        // 이벤트 게시글 생성
         const event =
             await this.eventQuery.createEventQuery(
                 createEventDto,
@@ -38,6 +39,7 @@ export class EventsService {
     async findAll(
         pageOptionsDto: PageOptionsDto,
     ): Promise<PageDto<Event>> {
+        // 모든 이벤트 게시글 PageNation을 통한 조회
         const events =
             await this.eventRepository.findAndCount(
                 {
@@ -53,6 +55,7 @@ export class EventsService {
                 },
             );
 
+        // PageNation Meta 생성
         const pageMetaDto = new PageMetaDto({
             pageOptionsDto,
             itemCount: events[1],
@@ -65,6 +68,7 @@ export class EventsService {
     }
 
     async findOne(id: string): Promise<Event> {
+        // 이벤트 게시글 조회
         const event =
             await this.eventRepository.findOne({
                 where: {
@@ -72,6 +76,7 @@ export class EventsService {
                 },
                 relations: { replies: true },
             });
+
         return event;
     }
 
@@ -79,6 +84,7 @@ export class EventsService {
         id: string,
         updateEventDto: UpdateEventDto,
     ): Promise<Event> {
+        // 업데이트 할 이벤트 게시글 조회
         const event =
             await this.eventRepository.findOne({
                 where: {
@@ -86,6 +92,7 @@ export class EventsService {
                 },
             });
 
+        // 해당 이벤트 게시글 업데이트
         const updatedEvent =
             await this.eventQuery.updateEventQuery(
                 updateEventDto,
@@ -96,6 +103,7 @@ export class EventsService {
     }
 
     async remove(id: string): Promise<Event> {
+        // 삭제할 이벤트 게시글 조회
         const event =
             await this.eventRepository.findOne({
                 where: {
@@ -103,6 +111,7 @@ export class EventsService {
                 },
             });
 
+        // 해당 이벤트 게시글 삭제
         const deletedEvent =
             await this.eventQuery.deleteEventQuery(
                 event,
@@ -114,6 +123,7 @@ export class EventsService {
     async createReply(
         createEventReplyDto: CreateEventReplyDto,
     ): Promise<EventReply> {
+        // 댓글을 추가할 이벤트 게시글 조회
         const event =
             await this.eventRepository.findOne({
                 where: {
@@ -121,6 +131,7 @@ export class EventsService {
                 },
             });
 
+        // 이벤트 게시글 댓글 생성
         const eventReply =
             await this.eventReplyQuery.createEventReplyQuery(
                 createEventReplyDto,
@@ -133,6 +144,7 @@ export class EventsService {
     async findAllReplies(): Promise<
         EventReply[]
     > {
+        // 모든 이벤트 게시글 댓글 조회
         const eventReplies =
             await this.eventReplyRepository.find(
                 {},
@@ -144,6 +156,7 @@ export class EventsService {
     async findOneReply(
         id: string,
     ): Promise<EventReply> {
+        // 이벤트 게시글 댓글 조회
         const eventReply =
             await this.eventReplyRepository.findOne(
                 {
@@ -159,6 +172,7 @@ export class EventsService {
         id: string,
         updateEventReplyDto: UpdateEventReplyDto,
     ): Promise<EventReply> {
+        // 업데이트 할 이벤트 게시글 댓글 조회
         const eventReply =
             await this.eventReplyRepository.findOne(
                 {
@@ -168,6 +182,7 @@ export class EventsService {
                 },
             );
 
+        // 해당 이벤트 게시글 댓글 업데이트
         const updatedEventReply =
             await this.eventReplyQuery.updateEventReplyQuery(
                 updateEventReplyDto,
@@ -180,6 +195,7 @@ export class EventsService {
     async removeReply(
         id: string,
     ): Promise<EventReply> {
+        // 삭제할 이벤트 게시글 댓글 조회
         const eventReply =
             await this.eventReplyRepository.findOne(
                 {
@@ -189,6 +205,7 @@ export class EventsService {
                 },
             );
 
+        // 해당 이벤트 게시글 댓글 삭제
         const deletedEventReply =
             await this.eventReplyQuery.deleteEventReplyQuery(
                 eventReply,

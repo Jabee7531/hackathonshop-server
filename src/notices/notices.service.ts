@@ -20,6 +20,7 @@ export class NoticesService {
     async create(
         createNoticeDto: CreateNoticeDto,
     ): Promise<Notice> {
+        // 공지 생성
         const notice =
             await this.noticeQuery.createEventQuery(
                 createNoticeDto,
@@ -31,6 +32,7 @@ export class NoticesService {
     async findAll(
         pageOptionsDto: PageOptionsDto,
     ): Promise<PageDto<Notice>> {
+        // 모든 공지 PageNation을 통한 조회
         const notice =
             await this.noticeRepository.findAndCount(
                 {
@@ -46,6 +48,7 @@ export class NoticesService {
                 },
             );
 
+        // PageNation Meta 생성
         const pageMetaDto = new PageMetaDto({
             pageOptionsDto,
             itemCount: notice[1],
@@ -58,20 +61,7 @@ export class NoticesService {
     }
 
     async findOne(id: string): Promise<Notice> {
-        const event =
-            await this.noticeRepository.findOne({
-                where: {
-                    id: id,
-                },
-            });
-
-        return event;
-    }
-
-    async update(
-        id: string,
-        updateNoticeDto: UpdateNoticeDto,
-    ): Promise<Notice> {
+        // 공지 조회
         const notice =
             await this.noticeRepository.findOne({
                 where: {
@@ -79,6 +69,22 @@ export class NoticesService {
                 },
             });
 
+        return notice;
+    }
+
+    async update(
+        id: string,
+        updateNoticeDto: UpdateNoticeDto,
+    ): Promise<Notice> {
+        // 업데이트 할 공지 조회
+        const notice =
+            await this.noticeRepository.findOne({
+                where: {
+                    id: id,
+                },
+            });
+
+        // 해당 공지 업데이트
         const updatedNotice =
             await this.noticeQuery.updateEventQuery(
                 updateNoticeDto,
@@ -89,6 +95,7 @@ export class NoticesService {
     }
 
     async remove(id: string): Promise<Notice> {
+        // 삭제할 공지 조회
         const notice =
             await this.noticeRepository.findOne({
                 where: {
@@ -96,6 +103,7 @@ export class NoticesService {
                 },
             });
 
+        // 해당 공지 삭제
         const deletedEvent =
             await this.noticeQuery.deleteEventQuery(
                 notice,

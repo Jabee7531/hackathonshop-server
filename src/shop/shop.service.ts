@@ -25,6 +25,7 @@ export class ShopService {
     async create(
         createShopDto: CreateShopDto,
     ): Promise<Products> {
+        // DB에 상품 추가
         const product =
             await this.shopQuery.createProductQuery(
                 createShopDto,
@@ -36,6 +37,7 @@ export class ShopService {
     async creates(
         createsShopDto: CreateShopDto[],
     ): Promise<Products[]> {
+        // DB에 상품 여러개 추가
         const products =
             await this.shopQuery.createsProductQuery(
                 createsShopDto,
@@ -45,6 +47,7 @@ export class ShopService {
     }
 
     async findAll(): Promise<Products[]> {
+        // 상품 목록 전체 조회
         const products =
             await this.productsRepository.find(
                 {},
@@ -54,6 +57,7 @@ export class ShopService {
     }
 
     async findOne(id: string): Promise<Products> {
+        // 상품 하나 조회
         const product =
             await this.productsRepository.findOne(
                 {
@@ -68,11 +72,11 @@ export class ShopService {
     async findQuery(
         productQueryDto: QueryShopDto,
     ): Promise<Products[]> {
+        // 상품 쿼리 조회
         const qb =
             this.productsRepository.createQueryBuilder(
                 'products',
             );
-
         if (productQueryDto.brand)
             qb.andWhere(
                 'products.brand IN (:...brands)',
@@ -95,7 +99,6 @@ export class ShopService {
                     color: productQueryDto.color,
                 },
             );
-
         if (productQueryDto.minPrice)
             qb.andWhere(
                 'products.price >= :min',
@@ -103,7 +106,6 @@ export class ShopService {
                     min: +productQueryDto.minPrice,
                 },
             );
-
         if (productQueryDto.maxPrice)
             qb.andWhere(
                 'products.price <= :max',
@@ -111,7 +113,6 @@ export class ShopService {
                     max: +productQueryDto.maxPrice,
                 },
             );
-
         if (productQueryDto.size)
             qb.andWhere(
                 ":size && string_to_array(products.size, ',')",
@@ -129,6 +130,7 @@ export class ShopService {
         id: string,
         updateShopDto: UpdateShopDto,
     ): Promise<Products> {
+        // 업데이트할 상품 조회
         const product =
             await this.productsRepository.findOne(
                 {
@@ -138,6 +140,7 @@ export class ShopService {
                 },
             );
 
+        // 상품 업데이트
         const updatedProduct =
             await this.shopQuery.updateProductQuery(
                 updateShopDto,
@@ -148,6 +151,7 @@ export class ShopService {
     }
 
     async remove(id: string): Promise<Products> {
+        // 삭제할 상품 조회
         const product =
             await this.productsRepository.findOne(
                 {
@@ -157,13 +161,16 @@ export class ShopService {
                 },
             );
 
+        // 상품 삭제
         const deletedProduct =
             await this.shopQuery.deleteProductQuery(
                 product,
             );
+
         return deletedProduct;
     }
 
+    // TossPayment 유효성 확인
     async checkPayment(
         paymentDto: PaymentDto,
     ): Promise<AxiosResponse<any, any>> {

@@ -10,6 +10,7 @@ async function bootstrap() {
         AppModule,
     );
 
+    // 예외 필터
     app.useGlobalFilters(
         new HttpExceptionFilter(),
     );
@@ -32,6 +33,7 @@ async function bootstrap() {
         credentials: true,
         optionsSuccessStatus: 204,
     });
+
     setupSwagger(app);
 
     await app.listen(3001);

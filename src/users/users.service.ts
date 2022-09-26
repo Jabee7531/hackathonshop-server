@@ -26,14 +26,17 @@ export class UsersService {
         private userQuery: UserQuery,
     ) {}
 
+    // Google 로그인시 https://www.googleapis.com/userinfo/v2/me 로 유저 정보 확인
     async checkUser(
         accessToken: string,
     ): Promise<boolean> {
+        // 유저 정보 확인
         const userProfile =
             await this.googleAuthService.getGoogleProfile(
                 accessToken,
             );
 
+        // SocialAccount 등록 여부 확인
         const socialAccount =
             await this.socialAccountsRepository.findOne(
                 {
@@ -57,6 +60,7 @@ export class UsersService {
         user: Users;
         jwt: string;
     }> {
+        // 유저 정보 확인
         const userProfile =
             await this.googleAuthService.getGoogleProfile(
                 accessToken,
@@ -110,6 +114,7 @@ export class UsersService {
     }
 
     async signOutUser(): Promise<string> {
+        // 로그인 쿠키정보 삭제
         const cookie = this.getCookieForLogOut();
 
         return cookie;
@@ -130,7 +135,6 @@ export class UsersService {
             );
 
         // 닉네임 중복 체크
-
         const checkNickName =
             await this.userRepository.findOne({
                 where: {
@@ -166,7 +170,6 @@ export class UsersService {
         }
 
         // User 등록 여부 확인
-
         const checkUser =
             await this.userRepository.findOne({
                 where: {
@@ -184,6 +187,7 @@ export class UsersService {
             );
         }
 
+        // User 생성
         const createdUser =
             await this.userQuery.createUserQuery(
                 nickName,
@@ -206,6 +210,7 @@ export class UsersService {
         cookie: string;
         deletedUser: Users;
     }> {
+        // User 확인
         const user =
             await this.userRepository.findOne({
                 where: {
@@ -213,6 +218,7 @@ export class UsersService {
                 },
             });
 
+        // User 삭제
         const deletedUser =
             await this.userQuery.deleteUserQuery(
                 user,
@@ -226,10 +232,14 @@ export class UsersService {
         };
     }
 
+    // JWT 쿠키 생성
     private getCookieWithJwtToken(user: Users) {
         const payload: TokenPayload = { user };
+
+        // JWT 생성
         const token =
             this.jwtService.sign(payload);
+
         return {
             cookie: `Authentication=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
                 'JWT_EXPIRATION_TIME',
@@ -238,6 +248,7 @@ export class UsersService {
         };
     }
 
+    // JWT 쿠키 삭제
     private getCookieForLogOut() {
         return `Authentication=; HttpOnly; Path=/; Max-Age=0`;
     }
