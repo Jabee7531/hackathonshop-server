@@ -1,6 +1,7 @@
 <div align="center">
   <h3>Hackathon Shop</h3>
   <h3>해커톤 쇼핑몰</h3>
+  <h5>2022. 07 ~ current</h5>
 </div>
 <div align="center">
     <a href="https://hackathonshop.vercel.app/">https://hackathonshop.vercel.app
