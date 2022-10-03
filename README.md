@@ -99,6 +99,18 @@ yarn start:dev
 
 <img src="./img/hksreport5r.png"/>
 
+# Load Test
+
+1. Up to 2,000 people, 50 requests per second, requests between 1 and 4 seconds
+
+<img src="./img/locust-50.png"/>
+
+2. Up to 2,000 people, 25 requests per second, requests between 1 and 4 seconds
+
+<img src="./img/locust-25.png"/>
+
+</br>
+
 # License
 
 MIT License
@@ -192,6 +204,17 @@ yarn start:dev
 
 </br>
 
+# 부하 테스트
+
+1. 최대 2,000명, 초당 50개 요청, 1~4초 사이의 요청
+
+<img src="./img/locust-50.png"/>
+
+2. 최대 2,000명, 초당 25개 요청, 1~4초 사이의 요청
+
+<img src="./img/locust-25.png"/>
+
+</br>
 # 라이센스
 
 MIT License
